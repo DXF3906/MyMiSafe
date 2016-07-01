@@ -10,5 +10,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //班长，我入伙了。。。。。请我吃饭吧！
+        //先交入会费
     }
 }
