@@ -7,10 +7,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.lidroid.xutils.ViewUtils;
@@ -31,20 +31,21 @@ public class WelcomeActivity extends AppCompatActivity {
     @ViewInject(R.id.vp_id)
     private ViewPager mVp;
     @ViewInject(R.id.ll_container_id)
-    private ViewPager ll;
+    private LinearLayout ll;
     private List<View> ds;
-    
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
         //思路：
         //①界面控件实例的获取
         ViewUtils.inject(this);
+
         //②关于ViewPager的操作-->ViewPager决定小圆点的联动
         aboutViewPager();
+
         //③关于线性布局的操作--》小圆点决定ViewPager页面的联动
         aboutLittleDots();
     }
@@ -60,15 +61,16 @@ public class WelcomeActivity extends AppCompatActivity {
         for(int i=0;i<ds.size()-1;i++){
             //①构建ImageViewd 实例
             ImageView iv=new ImageView(this);
+
             //②设置ImageView的属性
             iv.setImageResource(R.drawable.dot_selector);
             iv.setEnabled(true);
 
-            //添加加监听器，决定ViewPager目前选中的页面
+            //③添加加监听器，决定ViewPager目前选中的页面
             iv.setTag(i);
             iv.setOnClickListener(listener);
 
-            //③将控件设置到父控件
+            //④将控件设置到父控件
             ll.addView(iv);
         }
         ll.getChildAt(0).setEnabled(false);
@@ -105,7 +107,16 @@ public class WelcomeActivity extends AppCompatActivity {
                     view.setEnabled(true);
                 }
                 //②让当前位置的小圆点不可点击
-                ll.getChildAt(position).setEnabled(false);
+                if (position<ll.getChildCount()) {
+                    ll.getChildAt(position).setEnabled(false);
+                }else{
+                    for (int i=0;i<ll.getChildCount();i++){
+                        View view=ll.getChildAt(i);
+                        view.setEnabled(false);
+                    }
+
+                }
+
             }
         });
     }
@@ -116,7 +127,8 @@ public class WelcomeActivity extends AppCompatActivity {
      * 填充数据数据源
      */
     private void fillDataSource() {
-        //根据图片的张数，构建ImageVeiw的实例
+        //思路：
+        //①根据图片的张数，构建ImageVeiw的实例
         int[]iamgeIds={R.mipmap.welcome1,R.mipmap.welcome2,R.mipmap.welcome3};
         for (int imageId:iamgeIds){
             ImageView iv=new ImageView(this);
@@ -136,6 +148,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                finish();
             }
         });
 
