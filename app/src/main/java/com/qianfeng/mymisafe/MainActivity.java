@@ -12,5 +12,6 @@ public class MainActivity extends AppCompatActivity {
         //班长，我入伙了。。。。。请我吃饭吧！
         //先交入会费
         //交多少啊。能附赠个女朋友？带气的那种？
+        //其实，我更加想要建模型的！
     }
 }
