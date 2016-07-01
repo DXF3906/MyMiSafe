@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/welcome4_1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <CheckBox
+            android:id="@+id/cb_open_auto_mode_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="允许自动开启超强模式"
+            android:checked="true"
+            android:gravity="center"/>
+        <CheckBox
+            android:id="@+id/cb_join_plan_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="参加用户体验改进计划"
+            android:checked="true"
+            android:gravity="center"/>
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/welcome4_2"
+        />
+
+</LinearLayout>
