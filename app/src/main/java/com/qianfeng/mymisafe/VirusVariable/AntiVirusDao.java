@@ -24,7 +24,7 @@ public class AntiVirusDao {
         //默认情况下，没有获取到病毒信息
         String result = null;
         //病毒数据库的路径
-        String path = "/data/data/com.l000phone.mobilesafe/files/antivirus.db\"";
+        String path = "/data/data/com.qianfeng.mymisafe/files/antivirus.db";
         //"/data/data/com.l000phone.mobilesafe/files/antivirus.db"
         //打开数据库
         SQLiteDatabase db = SQLiteDatabase.openDatabase(path, null,
