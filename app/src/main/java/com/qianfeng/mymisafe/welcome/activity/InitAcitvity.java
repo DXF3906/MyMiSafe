@@ -24,7 +24,7 @@ public class InitAcitvity extends AppCompatActivity{
             setContentView(R.layout.activity_init);
 
             //将该应用的使用 通过SharedPreferences固化起来
-            config.edit().putBoolean("isFirstStart",true).commit();
+            config.edit().putBoolean("isFirstStart",false).commit();
 
             //开启子线程，睡眠片刻，尔后跳转到欢迎界面
             new Thread(){
